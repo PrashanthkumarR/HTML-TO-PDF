@@ -1,6 +1,6 @@
 <!doctype html>
 <html>
-<script>
+<script async>
     window.onscroll = function () { myFunction() };
 
         var navbar = document.getElementById("navbar");
@@ -349,7 +349,7 @@
                     a.click();
                 }
             };
-            xhttp.open("POST", "http://localhost:3000/generatepdf", true);
+            xhttp.open("POST", window.location.origin + "/generatepdf", true);
             xhttp.setRequestHeader("Content-type", "application/json");
             xhttp.send("sucesss");
         }
