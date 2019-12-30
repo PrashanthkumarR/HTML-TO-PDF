@@ -23,7 +23,7 @@ app.get('/', (req, res) => {
 app.post('/generatepdf', function (req, res) {
     try { 
         pdf.generatePdf().then((result)=>{
-            res.send(req.headers.origin + 'invoicesample.pdf')
+            res.send(req.headers.origin +'/' + 'invoicesample.pdf')
             
         }).catch((e) => {
             Promise.reject(e)
