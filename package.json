@@ -1,0 +1,27 @@
+{
+  "name": "html-to-pdf",
+  "version": "1.0.0",
+  "description": "convert HTML to PDF using nodej and puppeteer",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/PrashanthkumarR/HTML-TO-PDF.git"
+  },
+  "author": "prashanthkumar R",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/PrashanthkumarR/HTML-TO-PDF/issues"
+  },
+  "homepage": "https://github.com/PrashanthkumarR/HTML-TO-PDF#readme",
+  "dependencies": {
+    "cors": "^2.8.5",
+    "express": "^4.17.1",
+    "handlebars": "^4.5.3",
+    "path": "^0.12.7",
+    "puppeteer": "^2.0.0",
+    "util": "^0.12.1"
+  }
+}
