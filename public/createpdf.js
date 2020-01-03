@@ -5,11 +5,11 @@ const puppeteer = require('puppeteer')
 const hb = require('handlebars')
 const readFile = utils.promisify(fs.readFile)
 
-  async function getTemplateHtml() {
+  async function getTemplateHtml(file) {
 
     console.log("Loading template file in memory")
     try {
-        const invoicePath = path.resolve("./invoicesample.html");
+        const invoicePath =  path.resolve(__dirname +'/'+ file);
         return await readFile(invoicePath, 'utf8');
     } catch (err) {
         return Promise.reject("Could not load html template");
@@ -17,11 +17,11 @@ const readFile = utils.promisify(fs.readFile)
 }
 
 
-  async function generatePdf() {
-
+  async function generatePdf(filename) {
+           let file = filename;
     let data = {};
 
-    getTemplateHtml()
+    getTemplateHtml(file)
         .then(async (res) => {
             // Now we have the html code of our template in res object
             // you can check by logging it on console
@@ -42,10 +42,21 @@ const readFile = utils.promisify(fs.readFile)
             await page.setContent(html)
 
             // we Use pdf function to generate the pdf in the same folder as this file.
-            await page.pdf({ path: 'invoicesample.pdf', format: 'A4' })
+            let originalpath =  path.resolve(__dirname + '/' + file)
+              filename = filename.substring(0, filename.indexOf("."));
+              filename = path.resolve(__dirname + '/' + filename+ '.' + 'pdf')
+            await page.pdf({ path: filename, format: 'A4' })
 
             await browser.close();
             console.log("PDF Generated")
+            
+            fs.access(originalpath, error => {
+                if (!error) {
+                    fs.unlinkSync(originalpath);
+                } else {
+                    console.log(error);
+                }
+            });
             return await Promise.resolve('success');
 
         })
