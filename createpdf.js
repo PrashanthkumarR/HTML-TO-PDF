@@ -9,7 +9,7 @@ const readFile = utils.promisify(fs.readFile)
 
     console.log("Loading template file in memory")
     try {
-        const invoicePath =  path.join(__dirname ,'../publicPDF'+'/'+ file);
+        const invoicePath =  path.join(__dirname ,'./publicPDF'+'/'+ file);
         console.log(invoicePath)
         return await readFile(invoicePath, 'utf8');
     } catch (err) {
@@ -43,9 +43,9 @@ const readFile = utils.promisify(fs.readFile)
             await page.setContent(html)
 
             // we Use pdf function to generate the pdf in the same folder as this file.
-            let originalpath =  path.join(__dirname ,'../publicPDF'+'/'+ file);
+            let originalpath =  path.join(__dirname ,'./publicPDF'+'/'+ file);
               filename = filename.substring(0, filename.indexOf("."));
-              filename =  path.join(__dirname ,'../publicPDF'+'/'+ filename + '.' + 'pdf');
+              filename =  path.join(__dirname ,'./publicPDF'+'/'+ filename + '.' + 'pdf');
             await page.pdf({ path: filename, format: 'A4' })
 
             await browser.close();

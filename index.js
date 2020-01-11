@@ -2,9 +2,9 @@ const express = require('express');
 const path = require('path');
 const app = express();
 const bodyParser = require('body-parser');
-const pdf = require('./public/createpdf')
+const pdf = require('./createpdf')
 const cors =  require('cors')
-const fileupload = require('./public/file-uploader')
+const fileupload = require('./file-uploader')
 const fs = require('fs')
 process.env.PWD = process.cwd()
 
