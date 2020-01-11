@@ -6,6 +6,7 @@ const pdf = require('./public/createpdf')
 const cors =  require('cors')
 const fileupload = require('./public/file-uploader')
 const fs = require('fs')
+process.env.PWD = process.cwd()
 
 app.use(cors())
 
@@ -13,7 +14,9 @@ app.use(bodyParser.urlencoded({
     extended: false
 }));
 
-app.use(express.static(path.join(__dirname, 'public')))
+
+app.use(express.static(process.env.PWD + '/public'));
+app.use(express.static(path.join(__dirname, '/public')))
 app.use('files', express.static(path.join(__dirname, 'public')))
 
 
