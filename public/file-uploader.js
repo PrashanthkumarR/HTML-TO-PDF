@@ -11,7 +11,7 @@ const storage = multer.diskStorage({
     if (isValid) {
       error = null;
     }
-    cb(error, "public");
+    cb(error, "publicPDF");
   },
   filename: (req, file, cb) => {
     const name = file.originalname

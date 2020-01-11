@@ -15,9 +15,9 @@ app.use(bodyParser.urlencoded({
 }));
 
 
-app.use(express.static(process.env.PWD + '/public'));
-app.use(express.static(path.join(__dirname, '/public')))
-app.use('files', express.static(path.join(__dirname, 'public')))
+app.use(express.static(path.join(process.env.PWD, 'publicPDF')));
+//app.use(express.static(path.join(__dirname, '/public')))
+app.use('files', express.static(path.join(__dirname, 'publicPDF')))
 
 
 
@@ -38,7 +38,7 @@ app.post('/upload' ,fileupload , function(req , res){
                 //res.send(req.headers.origin +'/' + req.file.fieldname + '.'+ 'pdf')
                 if(result){
                      let filename = req.file.originalname
-                    let pathloc = path.join(__dirname ,`./public/${filename}`)
+                    let pathloc = path.join(__dirname ,`./publicPDF/${filename}`)
                     if (fs.existsSync(path)) {
                         fs.unlink(pathloc)
                     }
